@@ -14,7 +14,7 @@ import (
 
 var (
 	ServiceAccountPath string = "/var/run/secrets/kubernetes.io/serviceaccount/token"
-	TargetHost         string = "http://localhost:8081"
+	TargetURL         string = os.Getenv("TARGET_URL")
 )
 
 // Header mapping
@@ -52,7 +52,7 @@ func injectImpersonationHeaders(req *http.Request) {
 }
 
 func handleRequest(res http.ResponseWriter, req *http.Request) {
-	targetUrl, _ := url.Parse(TargetHost)
+	targetUrl, _ := url.Parse(TargetURL)
 
 	injectImpersonationHeaders(req)
 
