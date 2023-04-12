@@ -12,5 +12,5 @@ $ ./oauth2-proxy-k8s-impersonation
 
 ```bash
 $ curl http://localhost:8080
-# should send request to target host
+# should send request to target url
 ```
