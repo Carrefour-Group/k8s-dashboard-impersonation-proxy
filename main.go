@@ -3,8 +3,8 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
@@ -14,7 +14,7 @@ import (
 
 var (
 	ServiceAccountPath string = "/var/run/secrets/kubernetes.io/serviceaccount/token"
-	TargetURL         string = os.Getenv("TARGET_URL")
+	TargetURL          string = os.Getenv("TARGET_URL")
 )
 
 // Header mapping
