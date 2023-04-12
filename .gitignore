@@ -7,6 +7,7 @@
 *.dll
 *.so
 *.dylib
+oauth2-proxy-k8s-impersonation
 
 # Test binary, built with `go test -c`
 *.test
@@ -34,7 +35,3 @@ dist/
 
 # GoLand and IntelliJ IDEA files
 .idea/
-
-# env files that usually contain secrets or local config
-.env
-.envrc

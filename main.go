@@ -3,13 +3,13 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"io/ioutil"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
 	"os"
 	"strings"
-	// "github.com/caarlos0/env/v6"
 )
 
 var (
@@ -83,6 +83,7 @@ func main() {
 	}
 
 	http.HandleFunc("/", handleRequest)
+	log.Println("Starting Server")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		panic(err)
 	}
