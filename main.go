@@ -22,8 +22,8 @@ var (
 // - OAuth2-Proxy https://oauth2-proxy.github.io/oauth2-proxy/docs/configuration/overview/
 // - Kubernetes dashboard https://user-images.githubusercontent.com/8249283/54769658-03c87a00-4bd8-11e9-86ea-ea9165bb82da.png
 // OAuth2-Proxy                                                                 Kubernetes dashboard
-// X-Forwarded-Preferred-Username                                               Impersonate-User
-// X-Forwarded-Groups (format: A, B, C)                                         Impersonate-Group (one per group)
+// X-Auth-Request-Preferred-Username                                            Impersonate-User
+// X-Auth-Request-Groups (format: A, B, C)                                      Impersonate-Group (one per group)
 
 var serviceAccountToken string
 
@@ -32,11 +32,11 @@ func injectImpersonationHeaders(req *http.Request) {
 	req.Header.Set("Authorization", "Bearer "+serviceAccountToken)
 
 	// Add the Impersonate-User header to the request
-	if value := req.Header.Get("X-Forwarded-Preferred-Username"); len(value) > 0 {
+	if value := req.Header.Get("X-Auth-Request-Preferred-Username"); len(value) > 0 {
 		req.Header.Set("Impersonate-User", value)
 	}
 
-	if value := req.Header.Get("X-Forwarded-Groups"); len(value) > 0 {
+	if value := req.Header.Get("X-Auth-Request-Groups"); len(value) > 0 {
 		// Add the Impersonate-Group headers to the request
 		impersonateGroups := strings.Split(value, ",")
 		for _, impersonateGroup := range impersonateGroups {
