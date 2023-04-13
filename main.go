@@ -2,7 +2,6 @@
 package main
 
 import (
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -54,7 +53,7 @@ func handleRequest(res http.ResponseWriter, req *http.Request) {
 
 	injectImpersonationHeaders(req)
 
-	dump, _ := httputil.DumpRequest(req, false)
+	dump, _ = httputil.DumpRequest(req, false)
 	log.Printf("After injection: %q\n", dump)
 
 	proxy := httputil.ReverseProxy{Director: func(req *http.Request) {
