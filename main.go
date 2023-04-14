@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 	"net"
-	"tls"
+	"crypto/tls"
 
 	env "github.com/caarlos0/env/v8"
 )
